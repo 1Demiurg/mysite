@@ -1,2 +1,5 @@
 
-../settings.py
+mysite/static/settings.py
+mysite/media
+mysite/templates/db.sqlite3
+
