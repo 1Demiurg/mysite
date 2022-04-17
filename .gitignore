@@ -1,5 +1,5 @@
 
-mysite/static/settings.py
-mysite/media
-mysite/templates/db.sqlite3
+settings.py
+media
+db.sqlite3
 
