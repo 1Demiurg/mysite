@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView
 
-
 from .models import News, Category
 from .forms import NewsForm
+from ipware import get_client_ip
+
 
 
 class HomeNews(ListView):
@@ -17,6 +18,15 @@ class HomeNews(ListView):
         return context
 
     def get_queryset(self):
+        ip, is_routable = get_client_ip(self.request)
+        if ip is None:
+            ip = '0.0.0.0'
+        else:
+            if is_routable:
+                ipv = "Public"
+            else:
+                ipv = "Private"
+        print(ip, ipv)
         return News.objects.filter(is_published=True)
 
 
