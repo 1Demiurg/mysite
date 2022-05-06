@@ -13,7 +13,7 @@ from django.contrib.auth import login, logout
 from django.core.mail import send_mail
 
 
-def test(request):
+def contact(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             form = ContactForm(request.POST)
@@ -21,11 +21,11 @@ def test(request):
                 mail = send_mail(form.cleaned_data['subject'], form.cleaned_data['content'], '', [''], fail_silently=True)
                 if mail:
                     messages.success(request, 'Письмо отправлено!')
-                    return redirect('test')
+                    return redirect('contact')
                 else:
                     messages.error(request, 'Ошибка отправки')
             else:
-                messages.error(request, 'Ошибка регистрации')
+                messages.error(request, 'Ошибка валидации')
         else:
             form = ContactForm()
         return render(request, 'news/test.html', {"form": form})
