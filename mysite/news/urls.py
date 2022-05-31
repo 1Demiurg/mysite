@@ -5,6 +5,7 @@ urlpatterns = [
     path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),
     path('contact/', contact, name='contact'),
+    path('identification/', identification, name='identification'),
 
     path('', HomeNews.as_view(), name='home'),
     path('category/<int:category_id>/', NewsByCategory.as_view(), name='category'),
